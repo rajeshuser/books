@@ -7,19 +7,8 @@ const ordersRouter = express.Router();
 
 ordersRouter.get("/api/orders", async (req, res) => {
 	try {
-		const orders = await OrderModel.find({});
-		const populatedOrders = [];
-		for (let order of orders) {
-			const populatedOrder = { ...order };
-			populatedOrder.user = await UserModel.findOne({ _id: order.user.valueOf() });
-			populatedOrder.books = [];
-			for (let i = 0; i < order.books.length; i++) {
-				const book = await BookModel.findOne({ _id: order.books[i].valueOf() });
-				populatedOrder.books.push();
-			}
-			populatedOrders.push(populatedOrder);
-		}
-		res.status(200).send(populatedOrders);
+		const orders = await OrderModel.find({}).populate(["user", "books"]);
+		res.status(200).send(orders);
 	} catch (error) {
 		res.status(500).send({
 			error: error.message
