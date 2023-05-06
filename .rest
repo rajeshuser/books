@@ -1,0 +1,87 @@
+###
+GET http://localhost:5000
+
+###
+GET http://localhost:5000/api/users
+
+###
+POST http://localhost:5000/api/register
+Content-Type: application/json
+
+{
+	"name": "user77",
+	"email": "email77@email.com",
+	"password": "password77",
+	"isAdmin": true
+}
+
+###
+POST http://localhost:5000/api/login
+Content-Type: application/json
+
+{
+	"email": "email97@email.com",
+	"password": "password97"
+}
+
+###
+GET http://localhost:5000/api/books
+
+###
+POST http://localhost:5000/api/books
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDU2MTNkMDNmZDc5YmRlMDU2YzBjM2IiLCJpYXQiOjE2ODMzNjI3Nzl9._kzhK476fqMrt0nS_8JH4mIS17dE2kxolOBST8uElLY
+
+{
+	"title": "title11",
+	"author": "james",
+	"category": "suspense",
+	"price": 94,
+	"quantity": 344
+}
+
+###
+GET http://localhost:5000/api/books/645607ecd1da2e35648f859f
+
+###
+GET http://localhost:5000/api/books?category=fiction&author=corey
+
+
+###
+PUT http://localhost:5000/api/books/6456103b055f406c8ebee68e
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDU2MTNkMDNmZDc5YmRlMDU2YzBjM2IiLCJpYXQiOjE2ODMzNjI3Nzl9._kzhK476fqMrt0nS_8JH4mIS17dE2kxolOBST8uElLY
+
+{
+	"title": "title8",
+	"author": "killer",
+	"category": "crime",
+	"price": 7878,
+	"quantity": 10
+}
+
+###
+PATCH http://localhost:5000/api/books/6456103b055f406c8ebee68e
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDU2MTNkMDNmZDc5YmRlMDU2YzBjM2IiLCJpYXQiOjE2ODMzNjI3Nzl9._kzhK476fqMrt0nS_8JH4mIS17dE2kxolOBST8uElLY
+
+{
+	"price": 137,
+	"quantity": 90
+}
+
+###
+DELETE http://localhost:5000/api/books/645607ecd1da2e35648f859f
+
+###
+POST http://localhost:5000/api/order
+Content-Type: application/json
+
+{
+	"user": "6455fb8841aeb7bf7010a851",
+	"books": ["645607fcd1da2e35648f85a2", "6456087f50f49bdcebe8b469"],
+	"totalAmount": 55
+}
+
+###
+GET http://localhost:5000/api/orders
